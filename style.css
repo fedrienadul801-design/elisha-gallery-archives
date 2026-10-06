@@ -32,7 +32,7 @@ a { color:inherit; text-decoration:none; }
 .hero img { display:block; width:100%; height:auto; }
 .hero::after { content:""; position:absolute; inset:0; background:rgba(0,0,0,.28); pointer-events:none; }
 .hero-title { position:fixed; top:calc(50% + 30px); left:0; right:0; transform:translateY(-50%); z-index:2; text-align:center; padding:0 22px; pointer-events:none; font-family:var(--impact); font-weight:400; text-transform:uppercase; font-size:clamp(2.2rem, 10vw, 4rem); line-height:1.05; text-shadow:0 2px 16px rgba(0,0,0,.7); }
-.hero-cta { position:absolute; bottom:60px; left:50%; transform:translateX(-50%); z-index:2; margin-top:0; white-space:nowrap; }
+.hero-cta { font-family:var(--impact); position:absolute; bottom:60px; left:50%; transform:translateX(-50%); z-index:2; margin-top:0; white-space:nowrap; }
 .btn { display:inline-block; margin-top:18px; padding:13px 24px; border:2px solid #fff; background:#fff; color:var(--ink); font:600 1rem var(--sans); border-radius:0; cursor:pointer; transition:background .2s, color .2s; }
 .btn:hover { background:transparent; color:#fff; }
 

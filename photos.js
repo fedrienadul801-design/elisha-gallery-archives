@@ -5,6 +5,10 @@ const PHOTOS = [
     "title": "(  Drniating )   Brightest Smile Ever 💕(JPG)"
   },
   {
+    "src": "images/( _gee_akb ) __ _shell_malaysia pls hire him(JPG)_1.jpg",
+    "title": "(  Gee Akb )    Shell Malaysia Pls Hire Him(JPG) 1"
+  },
+  {
     "src": "images/grad1.jpg",
     "title": "Grad1"
   },

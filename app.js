@@ -1,0 +1,55 @@
+// ---------- Settings ----------
+const WHATSAPP_NUMBER = "60148359886";
+const PHOTOS = [
+  { src: "images/grad1.jpg", title: "Graduation portrait 1" },
+  { src: "images/grad2.jpg", title: "Graduation portrait 2" },
+  { src: "images/grad3.jpg", title: "Graduation portrait 3" },
+  { src: "images/grad4.jpg", title: "Graduation portrait 4" },
+  { src: "images/grad5.jpg", title: "Graduation portrait 5" },
+];
+
+// ---------- Gallery page ----------
+const grid = document.getElementById("grid");
+if (grid) {
+  const box = document.getElementById("lightbox");
+  const big = document.getElementById("big");
+  PHOTOS.forEach(p => {
+    const tile = document.createElement("button");
+    tile.className = "tile";
+    tile.setAttribute("aria-label", "View " + p.title);
+    const img = new Image();
+    img.src = p.src; img.alt = p.title; img.loading = "lazy";
+    tile.appendChild(img);
+    tile.addEventListener("click", () => {
+      big.src = p.src; big.alt = p.title;
+      box.classList.add("open");
+    });
+    grid.appendChild(tile);
+  });
+  const close = () => box.classList.remove("open");
+  document.getElementById("close").addEventListener("click", close);
+  box.addEventListener("click", e => { if (e.target === box) close(); });
+  document.addEventListener("keydown", e => { if (e.key === "Escape") close(); });
+}
+
+// ---------- Contact page: booking -> WhatsApp ----------
+const send = document.getElementById("send");
+if (send) {
+  send.addEventListener("click", () => {
+    const v = id => document.getElementById(id).value.trim();
+    const error = document.getElementById("error");
+    if (!v("name") || !v("date")) {
+      error.textContent = "Enter your name and graduation date to continue.";
+      return;
+    }
+    error.textContent = "";
+    const msg =
+      "Hi, I'd like to book a graduation photo session.\n" +
+      "Name: " + v("name") + "\n" +
+      "Date: " + v("date") + "\n" +
+      "Package: " + v("pkg") + "\n" +
+      (v("venue") ? "Venue: " + v("venue") + "\n" : "") +
+      (v("notes") ? "Notes: " + v("notes") : "");
+    window.open("https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(msg), "_blank");
+  });
+}

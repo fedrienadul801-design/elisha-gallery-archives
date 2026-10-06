@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | Dato Elisha's Gallery</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark">
+
+  <script src="topbar.js"></script>
+
+  <main class="wrap">
+    <h2>CONTACT</h2>
+    <div class="contact-list">
+      <a class="contact" href="https://wa.me/60148359886" target="_blank" rel="noopener"><strong>WhatsApp</strong><span>@jettpackinski</span></a>
+      <a class="contact" href="https://instagram.com/cinasarawak" target="_blank" rel="noopener"><strong>Instagram</strong><span>@cinasarawak</span></a>
+      <a class="contact" href="tel:+60148359886"><strong>Call</strong><span>+60 14-835 9886</span></a>
+    </div>
+
+    <h2 class="sub">BOOK A SESSION</h2>
+    <p class="lead">Fill this in and your request opens in WhatsApp, ready to send.</p>
+    <div class="form">
+      <label>Your name<input id="name" type="text" placeholder="Full name" autocomplete="name"></label>
+      <label>Graduation date<input id="date" type="date"></label>
+      <label>Package
+        <select id="pkg">
+          <option>Solo portrait</option>
+          <option>Portrait with family</option>
+          <option>Group / friends</option>
+          <option>Full day coverage</option>
+        </select>
+      </label>
+      <label>University / venue<input id="venue" type="text" placeholder="Where is your convocation?"></label>
+      <label>Notes<textarea id="notes" rows="3" placeholder="Anything we should know?"></textarea></label>
+      <button class="btn" id="send" type="button">Send on WhatsApp</button>
+      <p class="error" id="error" role="alert"></p>
+    </div>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

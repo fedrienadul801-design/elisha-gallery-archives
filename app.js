@@ -6,7 +6,7 @@ const PHOTOS = [
   { src: "images/grad3.jpg", title: "Graduation portrait 3" },
   { src: "images/grad4.jpg", title: "Graduation portrait 4" },
   { src: "images/grad5.jpg", title: "Graduation portrait 5" },
-  { src: "images/grad6.jpg", title: "Graduation portrait 5" },
+  { src: "images/grad6.jpg", title: "Graduation portrait 6" },
 ];
 
 // ---------- Gallery page ----------

@@ -47,3 +47,17 @@ if (send) {
     window.open("https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(msg), "_blank");
   });
 }
+
+// ---------- Home page: buttons fade in as you start scrolling ----------
+const heroActions = document.querySelector(".hero-actions");
+if (heroActions) {
+  const SHOW_AFTER = 20;     // pixels scrolled before the buttons start to appear
+  const FULL_AT = 220;       // pixels scrolled when they are fully visible
+  function fadeButtons() {
+    const p = Math.min(Math.max((window.scrollY - SHOW_AFTER) / (FULL_AT - SHOW_AFTER), 0), 1);
+    heroActions.style.opacity = p;
+    heroActions.style.pointerEvents = p > 0.3 ? "auto" : "none";
+  }
+  window.addEventListener("scroll", fadeButtons, { passive: true });
+  fadeButtons();
+}

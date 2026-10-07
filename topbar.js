@@ -33,8 +33,33 @@
     [burger, drawer, scrim].forEach(el => el.classList.toggle("open", open));
     burger.setAttribute("aria-expanded", open);
     burger.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    fade();
   }
   burger.addEventListener("click", () => setMenu(!drawer.classList.contains("open")));
   scrim.addEventListener("click", () => setMenu(false));
   document.addEventListener("keydown", e => { if (e.key === "Escape") setMenu(false); });
+
+  // Scroll fade. The icons and name always turn from black to white.
+  //  - Home page: white bar fades to transparent.
+  //  - Gallery / Contact: white bar fades to dark (stays solid).
+  const bar = document.querySelector(".topbar");
+  const isHome = document.body.classList.contains("home");
+  const FADE_DISTANCE = 320; // pixels of scrolling for a full fade (bigger = slower)
+  const DARK = 11;           // dark bar colour on Gallery / Contact (11 = page background)
+  const mix = (from, to, p) => Math.round(from + (to - from) * p);
+  function fade() {
+    const p = drawer.classList.contains("open") ? 0 : Math.min(window.scrollY / FADE_DISTANCE, 1);
+    if (isHome) {
+      bar.style.background = `rgba(255,255,255,${1 - p})`;
+      bar.style.borderBottomColor = `rgba(227,227,227,${1 - p})`;
+    } else {
+      const b = mix(255, DARK, p), l = mix(227, 51, p);
+      bar.style.background = `rgb(${b},${b},${b})`;
+      bar.style.borderBottomColor = `rgb(${l},${l},${l})`;
+    }
+    const c = mix(11, 255, p);
+    bar.style.color = burger.style.color = `rgb(${c},${c},${c})`;
+  }
+  window.addEventListener("scroll", fade, { passive: true });
+  fade();
 })();

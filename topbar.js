@@ -40,7 +40,7 @@
   document.addEventListener("keydown", e => { if (e.key === "Escape") setMenu(false); });
 
   // Scroll fade.
-  //  - Home page: starts transparent with white icons/name, turns solid white (black icons) as you scroll.
+  //  - Home page: starts solid black (white icons/name), fades to transparent as you scroll.
   //  - Gallery / Contact: starts white (black icons), turns dark (white icons) as you scroll.
   const bar = document.querySelector(".topbar");
   const isHome = document.body.classList.contains("home");
@@ -51,11 +51,10 @@
     const open = drawer.classList.contains("open");
     const p = Math.min(window.scrollY / FADE_DISTANCE, 1);
     if (isHome) {
-      const q = open ? 1 : p; // open menu: solid white bar, black icons
-      const c = mix(255, 11, q);
-      bar.style.background = `rgba(255,255,255,${q})`;
-      bar.style.borderBottomColor = `rgba(227,227,227,${q})`;
-      bar.style.color = burger.style.color = `rgb(${c},${c},${c})`;
+      const q = open ? 0 : p; // open menu: solid black bar
+      bar.style.background = `rgba(11,11,11,${1 - q})`;
+      bar.style.borderBottomColor = `rgba(51,51,51,${1 - q})`;
+      bar.style.color = burger.style.color = "#fff"; // icons and name stay white
     } else {
       const q = open ? 0 : p; // open menu: white bar, black icons
       const b = mix(255, DARK, q), l = mix(227, 51, q), c = mix(11, 255, q);
